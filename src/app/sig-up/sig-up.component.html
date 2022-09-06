@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center parent p-5">
+    <div class="col-6 d-flex align-items-center">
+        <form class="" [formGroup]="submitData" (ngSubmit)="userData()">
+            <div class="">
+                <label for="name">Name.</label><br>
+                <input type="text" name="name" id="name" placeholder="Enter your Name..!" formControlName="userName"
+                    required> <br>
+                <samp style="color: red;" *ngIf="Validtors && Validtors.invalid && Validtors.touched">This is not
+                    valid</samp>
+            </div>
+            <div class="mt-3">
+                <label for="rollNo">Roll.No</label><br>
+                <input type="number" name="rollNo" id="rollNo" placeholder="Enter your Roll..!" formControlName="rollNo"
+                    required>
+                <br>
+                <samp style="color: red;"
+                    *ngIf="NumberValidtors && NumberValidtors.invalid && NumberValidtors.touched">Roll Number is
+                    required..!</samp>
+
+            </div>
+            <div class="mt-3">
+                <label for="email">Email.</label><br>
+                <input type="email" name="email" id="email" placeholder="Enter your Email..!"
+                    formControlName="userEmail" required>
+                <br>
+                <samp style="color: red;"
+                    *ngIf="EmailValidtors && EmailValidtors.invalid && EmailValidtors.touched">Enter valid email
+                    addressh..!</samp>
+            </div>
+            <div class="mt-3">
+                <label for="password">Password.</label><br>
+                <input type="password" name="password" id="password" placeholder="Enter your Password..!"
+                    formControlName="userPassword" required>
+                <br>
+                <samp style="color: red;"
+                    *ngIf="PasswordValidtors && PasswordValidtors.invalid && PasswordValidtors.touched">Enter valid
+                    email
+                    addressh..!</samp>
+            </div>
+            <div class="mt-3">
+                <button class="btn" type="submit" [disabled]="submitData.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-6 data-container" border="2">
+        <div>
+            <ul *ngFor="let item of getData">
+                <h6>Name : {{item.userName}}</h6>
+                <h6>Email : {{item.userEmail}}</h6>
+                <h6>RollNo. : {{item.rollNo}}</h6>
+                <button class="m-1 btn" (click)="EditData(item.rollNo)">Edit</button>
+                <button (click)="deleteData(item.rollNo)" class="btn">Delete</button>
+            </ul>
+        </div>
+    </div>
+</div>
